@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,25 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
         randomizeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
-                // all of this needs working on
-
                 if (!minInput.getText().toString().equals("") && !maxInput.getText().toString().equals("")) {
-                    minNumber = Integer.parseInt(minInput.getText().toString());
-                } else {
-                    //inform the user they need to enter a number
+                    if (!maxInput.getText().toString().equals("")) {
+                        maxNumber = Integer.parseInt(maxInput.getText().toString());
+                        minNumber = Integer.parseInt(minInput.getText().toString());
+                        runGenerator(minNumber, maxNumber);
+                    }
                 }
-
-                if (!maxInput.getText().toString().equals("")) {
-                    maxNumber = Integer.parseInt(maxInput.getText().toString());
-                } else {
-                    //inform the user they need to enter a number
-                }
-
-                runGenerator(minNumber, maxNumber);
             }
         });
-
     }
 
     public void runGenerator(int min, int max) {
